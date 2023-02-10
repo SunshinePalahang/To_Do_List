@@ -34,7 +34,8 @@ while True:
     print("Press 1 to view today's scheduled jobs")
     print("Press 2 to add a job to today's schedule")
     print("Press 3 to remove a job from the schedule")
-    print("Press 4 to quit")
+    print("Press 4 to search")
+    print("Press 5 to quit")
     selection = input("Enter your choice-> ")
     try:
         entry = int(selection)
