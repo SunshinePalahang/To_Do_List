@@ -63,7 +63,7 @@ while True:
         num = my_tree.length()
         my_tree.insert(line)
         if num == my_tree.length()-1:
-            with open("data.txt", "a+") as to_write:
+            with open("Modified-Job-Scheduler/data.txt", "a+") as to_write:
                 to_write.write(line+"\n")
         input("Press any key to continue... ")
     elif int(selection) == 3:
@@ -77,9 +77,9 @@ while True:
                 print(result)
                 my_tree.delete_val(key_to_find)
                 print("Job successfully removed")
-                with open("data.txt", "r") as f:
+                with open("Modified-Job-Scheduler/data.txt", "r") as f:
                     lines = f.readlines()
-                with open("data.txt", "w") as f:
+                with open("Modified-Job-Scheduler/data.txt", "w") as f:
                     for line in lines:
                         if line.strip("\n") != start_time+","+duration_of_job+","+job_name:
                             f.write(line)
@@ -99,7 +99,7 @@ while True:
         if result:
             print("Searching job:")
             print(result)
-            with open("data.txt", "r") as f:
+            with open("Modified-Job-Scheduler/data.txt", "r") as f:
                 lines = f.readlines()
             input("Press any key to continue... ")
         else:
