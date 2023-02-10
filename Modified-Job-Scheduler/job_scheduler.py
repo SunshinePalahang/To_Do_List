@@ -33,17 +33,7 @@ def search_job():
             start_time = input("Enter the time in hh:mm format, ex 18:30 or 6:30-> ")
         else:
             break
-    duration_of_job = input("Enter the duration of the job in minutes, ex 60-> ")
-    while True:
-        try:
-            int(duration_of_job)
-        except ValueError:
-            print("Please enter a number for number of minutes")
-            duration_of_job = input("Enter the duration of the job in minutes, ex 60-> ")
-        else:
-            break
-    job_name = input("Enter the name of the job (case sensitive)-> ")
-    return start_time, duration_of_job, job_name
+    return start_time
 
 my_tree = BSTDemo()
 
@@ -102,7 +92,7 @@ while True:
             input("Press any key to continue... ")
     elif int(selection) == 4:
         print("You have chosen to search a job from the schedule")
-        start_time, duration_of_job, job_name = search_job()
+        start_time= search_job()
         key_to_find = datetime.strptime(start_time, '%H:%M').time()
         result = my_tree.find_val(key_to_find)
         if result:
