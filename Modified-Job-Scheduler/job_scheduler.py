@@ -47,7 +47,8 @@ while True:
     print("Press 2 to add a job to today's schedule")
     print("Press 3 to remove a job from the schedule")
     print("Press 4 to search")
-    print("Press 5 to quit")
+    print("Press 5 to set status")
+    print("Press 6 to quit")
     selection = input("Enter your choice-> ")
     try:
         entry = int(selection)
@@ -106,6 +107,20 @@ while True:
             print("Job not found")
             input("Press any key to continue... ")            
     elif int(selection) == 5:
+        print("You have chosen to set a status a job from the schedule")
+        start_time= search_job()
+        key_to_find = datetime.strptime(start_time, '%H:%M').time()
+        result = my_tree.find_val(key_to_find)
+        if result:
+            print("Searching job:")
+            print(result)
+            with open("Modified-Job-Scheduler/data.txt", "r") as f:
+                lines = f.readlines()
+            input("Press any key to continue... ")
+        else:
+            print("Job not found")
+            input("Press any key to continue... ")            
+    elif int(selection) == 6:
         print("Exiting program...")
         break
     else:
