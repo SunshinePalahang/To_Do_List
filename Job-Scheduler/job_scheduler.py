@@ -25,7 +25,7 @@ def get_job_input_details():
 
 my_tree = BSTDemo()
 
-with open("data.txt") as f:
+with open("Job-Scheduler/data.txt") as f:
     for line in f:
         my_tree.insert(line)
 
