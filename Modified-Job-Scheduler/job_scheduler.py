@@ -90,27 +90,18 @@ while True:
         else:
             print("Job not found")
             input("Press any key to continue... ")
+    #add search feature
     elif int(selection) == 4:
         print("You have chosen to search a job from the schedule")
         start_time= search_job()
         key_to_find = datetime.strptime(start_time, '%H:%M').time()
         result = my_tree.find_val(key_to_find)
         if result:
-            if result.name_of_job == job_name and result.duration == duration_of_job:
-                print("Removing job:")
-                print(result)
-                my_tree.delete_val(key_to_find)
-                print("Job successfully removed")
-                with open("data.txt", "r") as f:
-                    lines = f.readlines()
-                with open("data.txt", "w") as f:
-                    for line in lines:
-                        if line.strip("\n") != start_time+","+duration_of_job+","+job_name:
-                            f.write(line)
-                input("Press any key to continue... ")
-            else:
-                print("The name and/or duration of job did not match, delete failed")
-                input("Press any key to continue... ")
+            print("Searching job:")
+            print(result)
+            with open("data.txt", "r") as f:
+                lines = f.readlines()
+            input("Press any key to continue... ")
         else:
             print("Job not found")
             input("Press any key to continue... ")            
