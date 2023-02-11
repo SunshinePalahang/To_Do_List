@@ -105,7 +105,8 @@ while True:
             input("Press any key to continue... ")
         else:
             print("Job not found")
-            input("Press any key to continue... ")            
+            input("Press any key to continue... ")     
+    #add set status feature       
     elif int(selection) == 5:
         print("You have chosen to set a status a job from the schedule")
         start_time= search_job()
@@ -114,6 +115,8 @@ while True:
         if result:
             print("Searching job:")
             print(result)
+            status = input("Accomplished? Y/N ")
+            print(result, "DONE")
             with open("Modified-Job-Scheduler/data.txt", "r") as f:
                 lines = f.readlines()
             input("Press any key to continue... ")
