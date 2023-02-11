@@ -109,23 +109,27 @@ while True:
     #add set status feature       
     elif int(selection) == 5:
         print("You have chosen to set a status a job from the schedule")
-        start_time= search_job()
+        start_time, duration_of_job, job_name = get_job_input_details()
         key_to_find = datetime.strptime(start_time, '%H:%M').time()
         result = my_tree.find_val(key_to_find)
         if result:
-            print("Searching job:")
-            print(result)
-            status = input("Accomplished? Y/N ")
-            print(result, "DONE")
-            my_tree.delete_val(key_to_find)
-            print("Task successfully accomplished!")
-            with open("Modified-Job-Scheduler/data.txt", "r") as f:
-                lines = f.readlines()
-            with open("Modified-Job-Scheduler/data.txt", "w") as f:
-                for line in lines:
-                    if line.strip("\n") != start_time:
-                        f.write(line)
-            input("Press any key to continue... ")
+            if result.name_of_job == job_name and result.duration == duration_of_job:
+                print("Searching job:")
+                print(result)
+                status = input("Accomplished? (y/n): ")
+                print(result, "DONE")
+                my_tree.delete_val(key_to_find)
+                print("Job successfully accomplished!")
+                with open("Modified-Job-Scheduler/data.txt", "r") as f:
+                    lines = f.readlines()
+                with open("Modified-Job-Scheduler/data.txt", "w") as f:
+                    for line in lines:
+                        if line.strip("\n") != start_time+","+duration_of_job+","+job_name:
+                            f.write(line)
+                input("Press any key to continue... ")
+            else:
+                print("The name and/or duration of job did not match, delete failed")
+                input("Press any key to continue... ")
         else:
             print("Job not found")
             input("Press any key to continue... ")            
