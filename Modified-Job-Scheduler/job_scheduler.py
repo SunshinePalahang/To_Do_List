@@ -117,8 +117,14 @@ while True:
             print(result)
             status = input("Accomplished? Y/N ")
             print(result, "DONE")
+            my_tree.delete_val(key_to_find)
+            print("Task successfully accomplished!")
             with open("Modified-Job-Scheduler/data.txt", "r") as f:
                 lines = f.readlines()
+            with open("Modified-Job-Scheduler/data.txt", "w") as f:
+                for line in lines:
+                    if line.strip("\n") != start_time:
+                        f.write(line)
             input("Press any key to continue... ")
         else:
             print("Job not found")
