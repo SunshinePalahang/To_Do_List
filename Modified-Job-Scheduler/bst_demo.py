@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from colorama import Fore, Style
 
 class Node:
     def __init__(self, key):
@@ -47,22 +48,27 @@ class BSTDemo:
 
     def helpful_print(self, key, succeeded):
         if succeeded:
+            print(Fore.BLUE+"-"*60)
             print(f"Added:\t\t {key.name_of_job}")
             print(f"Begin:\t\t {key.data}")
             print(f"End:\t\t {key.scheduled_end}")
             print("-"*60)
+            print(Style.RESET_ALL)
         else:
+            print(Fore.RED+"-"*60)
             print(f"Rejected:\t {key.name_of_job}")
             print(f"Begin:\t\t {key.data}")
             print(f"End:\t\t {key.scheduled_end}")
             print("Reason:\t Time slot overlap, please verify")
             print("-"*60)
+            print(Style.RESET_ALL)
 
     def in_order(self):
-        print("Full job schedule for today")
+        print(Fore.CYAN +"<----------------Full job schedule for today--------------->")
         print("-"*60)
         self._in_order(self.root)
         print("-"*60)
+        print(Style.RESET_ALL)
 
     def _in_order(self, curr):
         if curr:
